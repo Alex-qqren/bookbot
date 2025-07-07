@@ -1,6 +1,6 @@
 def get_num_words(book_text):
   num_words = len(book_text.split())
-  return f"{num_words} words found in the document"
+  return num_words
 
 def count_letters(book_text):
   letter_dict = {}
@@ -11,3 +11,18 @@ def count_letters(book_text):
     else:
       letter_dict[lower_char] += 1
   return letter_dict
+
+def log_report(obj):
+  dict_list = []
+  
+  for key in obj:
+    if key.isalpha():
+      value = obj[key]
+      dict_list.append({"char": key, "num": value})
+
+  def sort_on(items):
+    return items["num"]
+
+  dict_list.sort(reverse = True, key=sort_on)
+  
+  return dict_list
